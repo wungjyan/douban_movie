@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Movie from '../movie/index.vue'
+import MovieDetails from '../movie/movieDetails.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -8,7 +9,13 @@ export default new VueRouter({
     {
       path: '/',
       name: 'Home',
-      component: Movie
+      component: Movie,
+      alias: '/movie'
+    },
+    {
+      path: '/movie-details',
+      name: 'MovieDetails',
+      component: MovieDetails
     }
   ]
 })
