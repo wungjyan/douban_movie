@@ -3,7 +3,7 @@
        v-show="showList">
     <div :class="$style.header">
       <p>{{title}}</p>
-      <router-link to="home">
+      <router-link :to="{path:'more-movies',query:{type:getType}}">
         更多
       </router-link>
     </div>
@@ -18,7 +18,7 @@ export default {
   props: {
     requestUrl: {
       type: String,
-      default: '/api/movie/in_theaters?start=0&count=8'
+      default: '/api/movie/in_theaters'
     }
   },
   data () {
@@ -29,8 +29,15 @@ export default {
       imgUrl: this.requestUrl
     };
   },
+  computed: {
+    getType () {
+      var arr = this.requestUrl.split('/');
+      var len = arr.length;
+      return arr[len - 1];
+    }
+  },
   mounted () {
-    axios.get(this.imgUrl).then(response => {
+    axios.get(this.imgUrl + '?start=0&count=8').then(response => {
       var res = response.data;
       this.title = res.title;
       var movies = [];
@@ -69,6 +76,7 @@ export default {
     font-size: 28px;
     height: 52px;
     line-height: 52px;
+    margin-right: 10px;
   }
 }
 </style>

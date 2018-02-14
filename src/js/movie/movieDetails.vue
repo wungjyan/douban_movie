@@ -48,7 +48,10 @@ export default {
       des.title = res.title;
       des.img = res.images.large;
       des.country = res.countries[0];
-      des.genres = res.genres[0] + '/' + res.genres[1] + '/';
+      des.genres = '';
+      for (var i = 0; i < res.genres.length; i++) {
+        des.genres += res.genres[i] + '/'
+      }
       des.director = res.directors[0].name + '（导演）' + '/';
       des.casts = '';
       for (var i = 0; i < res.casts.length; i++) {
@@ -68,7 +71,7 @@ export default {
 <style lang='scss' module>
 .wrap {
   width: 96%;
-  margin: 40px auto;
+  margin: 120px auto;
   h2 {
     font-size: 40px;
     font-weight: 500;

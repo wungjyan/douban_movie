@@ -1,8 +1,9 @@
 <template>
   <div>
     <nav-header></nav-header>
-    <movies-list></movies-list>
-    <movies-list requestUrl="/api/movie/coming_soon?start=0&count=8"></movies-list>
+    <movies-list style="margin-top:100px;"></movies-list>
+    <movies-list requestUrl="/api/movie/coming_soon"></movies-list>
+
   </div>
 </template>
 
@@ -20,3 +21,4 @@ export default {
   }
 }
 </script>
+

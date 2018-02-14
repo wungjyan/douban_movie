@@ -44,6 +44,9 @@ export default {
     width: 200px;
     height: 374px;
     a {
+      &:link {
+        text-decoration: none;
+      }
       img {
         width: 100%;
         height: 284px;
