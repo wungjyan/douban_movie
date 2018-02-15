@@ -20,6 +20,13 @@ npm start
 
 ## 介绍
 
+### 功能
+
+正在上映的电影 （查看更多）  
+即将上映的电影 （查看更多）  
+电影详情页  
+电影（人物）搜索上拉加载
+
 ### 项目特点
 
 * 组件化
@@ -45,10 +52,16 @@ hotcss 使用动态的 HTML 根字体大小和动态的 viewport scale。在 vue
 使用 css Module 防止命名冲突，它的工作原理是把一个类名编译成哈希字符串，然后在引用的时候直接使用这个哈希字符串字符串，进而保证相同的类名根据不同的路径和组件名称得到不同的值，保证了最终的类名隔离。
 [vue 中配置 CSS Module](https://vue-loader.vuejs.org/zh-cn/features/css-modules.html)
 
-### 用到的 API
+### API 请求
 
 项目中用到的 api 有：
 
 * 正在上映的电影（北京）：/v2/movie/in_theaters
 * 即将上映的电影：/v2/movie/coming_soon
 * 电影搜索：/v2/movie/search?q=
+
+[查看更多豆瓣 api](https://developers.douban.com/wiki/?title=api_v2)
+
+### 插件
+
+[vue-infinite-scroll](https://github.com/ElemeFE/vue-infinite-scroll) 上拉加载
