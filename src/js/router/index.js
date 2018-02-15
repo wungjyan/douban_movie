@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Movie from '../movie/index.vue'
 import MovieDetails from '../movie/movieDetails.vue'
 import MoreMovies from '../movie/moreMovies.vue'
+import SearchList from '../movie/searchList.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -22,6 +23,11 @@ export default new VueRouter({
       path: '/more-movies',
       name: 'MoreMovies',
       component: MoreMovies
+    },
+    {
+      path: '/search-list',
+      name: 'SearchList',
+      component: SearchList
     }
   ]
 })

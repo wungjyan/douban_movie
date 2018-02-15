@@ -7,9 +7,11 @@
 
     </div>
     <div :class="$style.search">
-      <input type="text">
+      <input type="text"
+             @keyup.enter="search()"
+             v-model.trim="val">
       <img src="../../assets/search.png"
-           alt="">
+           @click="search()">
     </div>
   </div>
 </template>
@@ -18,8 +20,13 @@
 export default {
   data () {
     return {
-      query: ''
+      val: ''
     };
+  },
+  methods: {
+    search () {
+      this.$router.push({ path: 'search-list', query: { searchVal: this.val } })
+    }
   }
 }
 </script>

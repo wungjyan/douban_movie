@@ -33,16 +33,16 @@ export default {
       moviesList: [],
       moviesTitle: '',
       busy: false,
-      requestUrl: '',
-      mType: ''
+      // requestUrl: '',
+      searchVal: ''
     };
   },
   components: {
     NavHeader
   },
   mounted () {
-    var type = this.$route.query.type;
-    this.mType = type;
+    var val = this.$route.query.searchVal;
+    this.searchVal = val;
   },
   methods: {
     getMovies (res, moviesList) {
@@ -58,25 +58,21 @@ export default {
     loadMore () {
       this.busy = true;
       var start = this.moviesList.length;
-      setTimeout(() => {
-        axios.get('/api/movie/' + this.mType + '?start=' + start + '&count=9').then(response => {
-          var res = response.data;
-          var title = res.title;
-          var total = res.total;
-          var addMovies = [];
-          this.moviesTitle = title;
-          this.getMovies(res, addMovies);
-          if (start == 0) {
-            this.moviesList = addMovies;
-          } else {
-            this.moviesList = this.moviesList.concat(addMovies);
-          }
-          if (this.moviesList.length < total) {
-            this.busy = false;
-          }
-        })
-      }, 1000)
-
+      axios.get('/api/movie/search?q=' + this.searchVal).then(response => {
+        var res = response.data;
+        var title = res.title;
+        var addMovies = [];
+        this.moviesTitle = title;
+        this.getMovies(res, addMovies);
+        if (start == 0) {
+          this.moviesList = addMovies;
+        } else {
+          this.moviesList = this.moviesList.concat(addMovies);
+        }
+        if (this.moviesList.length < 20) {
+          this.busy = false;
+        }
+      })
     }
 
   }
