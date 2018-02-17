@@ -65,3 +65,47 @@ hotcss 使用动态的 HTML 根字体大小和动态的 viewport scale。在 vue
 ### 插件
 
 [vue-infinite-scroll](https://github.com/ElemeFE/vue-infinite-scroll) 上拉加载
+[vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper) vue 轮播插件
+
+## webpack
+
+考虑到此项目不是很复杂以及为了便于配置，所以自己配置了`webpack.config.js`文件。  
+由于自己不是很熟悉 webpack，所以过程中遇到不少错误，好在参考 webpack 官方文档以及 vue 官网后都能找到解决方法。  
+项目目录里有两份配置文件：
+
+```
+//基础配置，只用于开发环境
+webpack.config.js
+
+//添加不同环境，用于打包
+webpack.config.dev.js
+```
+
+此项目如果打包上线，由于跨域问题，功能会失效。不过为了练习，所以还是配置了 `webpack.config.dev.js` 文件。  
+若需打包，在 scripts 中指定配置文件：
+
+```
+"build": "webpack --env.production --config webpack.config.dev.js"
+```
+
+### 遇到的问题
+
+一些关于 loader 和插件之类的问题，参考官网就可以找到解决办法，就不详说了。这里想要提一个重要的问题，如果是第一次配置 vue 项目的 webpack 文件，你可能会在浏览器中看到这样的错误：
+
+> [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.
+
+出现这个的原因是缺少 vue 编译器。具体请参考官网这里[对不同构建版本的解释](https://cn.vuejs.org/v2/guide/installation.html)。
+
+解决方法：在 webpack 配置文件里加入这一项
+
+```
+resolve: {
+  alias: {
+    vue$: 'vue/dist/vue.esm.js' // 用 webpack 1 时需用 'vue/dist/vue.common.js'
+  }
+},
+```
+
+## 总结
+
+不通过 vue 脚手架，从零到整地手打所有代码，让我加深了对 vue 开发的理解以及了解了 webpack 的配置使用。项目中使用到了 CSS Module 命名以及 hotcss 适配方案，让我在收获新知识的同时，也打下了延伸其他项目的基础。通过不断学习和总结，提升自身能力。
