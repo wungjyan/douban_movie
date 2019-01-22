@@ -4,7 +4,6 @@
 
 > vue2.0+webpack+sass+CSS Module+hotcss
 
-[2018.12.16] 部署到服务器，采用nginx代理豆瓣api，预览地址：http://120.78.167.54/#/
 
 ## 图片演示
 
